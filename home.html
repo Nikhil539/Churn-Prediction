@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1 1 45%;
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus {
+            border-color: #007bff;
+        }
+        .btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .confidence {
+            font-weight: bold;
+            color: #28a745;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Customer Churn Prediction</h1>
+        <form method="POST">
+            <!-- Input fields -->
+            <div class="form-group">
+                <label for="query1">Senior Citizen</label>
+                <input type="text" name="query1" id="query1" value="{{ query1 }}">
+            </div>
+            <div class="form-group">
+                <label for="query2">Monthly Charges</label>
+                <input type="text" name="query2" id="query2" value="{{ query2 }}">
+            </div>
+            <div class="form-group">
+                <label for="query3">Total Charges</label>
+                <input type="text" name="query3" id="query3" value="{{ query3 }}">
+            </div>
+            <div class="form-group">
+                <label for="query4">Gender</label>
+                <input type="text" name="query4" id="query4" value="{{ query4 }}">
+            </div>
+            <div class="form-group">
+                <label for="query5">Partner</label>
+                <input type="text" name="query5" id="query5" value="{{ query5 }}">
+            </div>
+            <div class="form-group">
+                <label for="query6">Dependents</label>
+                <input type="text" name="query6" id="query6" value="{{ query6 }}">
+            </div>
+            <div class="form-group">
+                <label for="query7">Phone Service</label>
+                <input type="text" name="query7" id="query7" value="{{ query7 }}">
+            </div>
+            <div class="form-group">
+                <label for="query8">Multiple Lines</label>
+                <input type="text" name="query8" id="query8" value="{{ query8 }}">
+            </div>
+            <div class="form-group">
+                <label for="query9">Internet Service</label>
+                <input type="text" name="query9" id="query9" value="{{ query9 }}">
+            </div>
+            <div class="form-group">
+                <label for="query10">Online Security</label>
+                <input type="text" name="query10" id="query10" value="{{ query10 }}">
+            </div>
+            <div class="form-group">
+                <label for="query11">Online Backup</label>
+                <input type="text" name="query11" id="query11" value="{{ query11 }}">
+            </div>
+            <div class="form-group">
+                <label for="query12">Device Protection</label>
+                <input type="text" name="query12" id="query12" value="{{ query12 }}">
+            </div>
+            <div class="form-group">
+                <label for="query13">Tech Support</label>
+                <input type="text" name="query13" id="query13" value="{{ query13 }}">
+            </div>
+            <div class="form-group">
+                <label for="query14">Streaming TV</label>
+                <input type="text" name="query14" id="query14" value="{{ query14 }}">
+            </div>
+            <div class="form-group">
+                <label for="query15">Streaming Movies</label>
+                <input type="text" name="query15" id="query15" value="{{ query15 }}">
+            </div>
+            <div class="form-group">
+                <label for="query16">Contract</label>
+                <input type="text" name="query16" id="query16" value="{{ query16 }}">
+            </div>
+            <div class="form-group">
+                <label for="query17">Paperless Billing</label>
+                <input type="text" name="query17" id="query17" value="{{ query17 }}">
+            </div>
+            <div class="form-group">
+                <label for="query18">Payment Method</label>
+                <input type="text" name="query18" id="query18" value="{{ query18 }}">
+            </div>
+            <button type="submit" class="btn">Predict</button>
+        </form>
+
+        <!-- Display results -->
+        {% if output1 and output2 %}
+        <div class="result">
+            <p>{{ output1 }}</p>
+            <p class="confidence">{{ output2 }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
